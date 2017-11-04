@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
+import openSocket from 'socket.io-client';
 import ChatBody from './components/ChatBody';
 import Panel from './components/Panel';
 import './App.css';
 
-class App extends Component {
+const socket = openSocket('http://localhost:8900');
+
+export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			users: [
-				{
-					id: 0,
-					name: 'Chester'
-				},
-				{
-					id: 1,
-					name: 'Definitely not a dummy'
-				},
-				{
-					id: 6,
-					name: 'Long names are a pain but possible'
-				}
-			],
+			users: [],
 			messages: [
 				{
 					id: 0,
@@ -32,6 +22,12 @@ class App extends Component {
 				}
 			]
 		};
+
+		socket.emit('userConnect', { id: 33, name: 'test'});
+
+		socket.on('updateUserlist', users => {
+			this.setState(users);
+		});
 	}
 
 	render() {
@@ -45,5 +41,3 @@ class App extends Component {
 		);
 	}
 }
-
-export default App;
