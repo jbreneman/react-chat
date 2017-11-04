@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import openSocket from 'socket.io-client';
 import ChatBody from './components/ChatBody';
 import Panel from './components/Panel';
 import './App.css';
-
-const socket = openSocket('http://localhost:8900');
+import { connect, updateUserlist } from './api';
 
 export default class App extends Component {
 	constructor(props) {
@@ -23,9 +21,9 @@ export default class App extends Component {
 			]
 		};
 
-		socket.emit('userConnect', { id: 33, name: 'test'});
+		connect({ id: 33, name: 'test'});
 
-		socket.on('updateUserlist', users => {
+		updateUserlist(users => {
 			this.setState(users);
 		});
 	}
