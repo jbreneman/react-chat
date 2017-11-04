@@ -8,7 +8,7 @@ export default class Panel extends Component {
 		return (
 			<aside className="panel">
 				<header className="panel__header">
-					Users Online
+					Online
 				</header>
 				<ul className="panel__list">
 					{users.map(user => {

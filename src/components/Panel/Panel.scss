@@ -1,10 +1,29 @@
+@import 'styles/vars.scss';
+
 .panel {
 	width: 16rem;
 	height: 100%;
+	background-color: $secondary;
 
 	&__header {
 		width: 100%;
-		font-family: sans-serif;
+		padding: 1rem;
+		font-weight: 900;
 		font-size: 2rem;
+		text-transform: uppercase;
+		color: white;
+		line-height: .8;
+	}
+
+	&__list {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	&__list-item {
+		color: white;
+		padding: .75rem 1rem 0 2rem;
+		line-height: 1.2;
 	}
 }

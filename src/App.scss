@@ -1,4 +1,16 @@
+@import 'styles/vars.scss';
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	overflow: hidden;
+	font-family: $raleway;
+}
+
 .chat {
 	width: 100vw;
 	height: 100vh;
+	display: flex;
 }
