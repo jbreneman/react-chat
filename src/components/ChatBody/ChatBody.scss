@@ -3,17 +3,19 @@
 .chat-body {
 	flex-grow: 1;
 	background-color: $light;
-	padding: 1rem;
+	display: flex;
+	flex-direction: column;
 
 	&__list {
+		flex-grow: 1;
 		width: 100%;
-		height: 100%;
 		list-style-type: none;
 		margin: 0;
-		padding: 0;
+		padding: 1rem;
 	}
 
 	&__list-item {
 		padding-bottom: .5rem;
+		font-size: 1.125rem;
 	}
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ChatBody.css';
+import ChatInput from './ChatInput';
 
 export default class ChatBody extends Component {
 	render() {
@@ -14,6 +15,7 @@ export default class ChatBody extends Component {
 						)
 					})}
 				</ul>
+				<ChatInput />
 			</main>
 		);
 	}
