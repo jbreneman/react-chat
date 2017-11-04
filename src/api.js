@@ -6,8 +6,12 @@ export const connect = (user) => {
 	socket.emit('userConnect', user);
 };
 
-export const chatMessage = (message) => {
+export const sendMessage = (message) => {
 	socket.emit('chatMessage', message);
+};
+
+export const receiveMessage = (callback) => {
+	socket.on('chatMessage', message => callback(message));
 };
 
 export const updateUserlist = (callback) => {

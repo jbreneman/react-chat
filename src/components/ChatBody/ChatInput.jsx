@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './ChatInput.css';
-import { chatMessage } from '../../api';
+import { sendMessage } from '../../api';
 
 export default class ChatInput extends Component {
 	constructor(props) {
@@ -12,8 +12,10 @@ export default class ChatInput extends Component {
 
 	_handleKeyPress = (e) => {
 		if (e.key === 'Enter') {
-			chatMessage({
-				text: this.state.text
+			sendMessage({
+				text: this.state.text,
+				username: 'test',
+				datetime: new Date()
 			});
 
 			this.setState({ text: '' });
