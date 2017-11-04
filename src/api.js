@@ -14,6 +14,10 @@ export const receiveMessage = (callback) => {
 	socket.on('chatMessage', message => callback(message));
 };
 
+export const allMessages = (callback) => {
+	socket.on('allMessages', messages => callback(messages));
+};
+
 export const updateUserlist = (callback) => {
 	socket.on('updateUserlist', users => callback(users));
 };

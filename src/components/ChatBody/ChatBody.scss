@@ -11,11 +11,18 @@
 		width: 100%;
 		list-style-type: none;
 		margin: 0;
-		padding: 1rem;
+		padding: 1rem 1rem 0 1rem;
+		overflow: hidden;
+		overflow-y: auto;
 	}
 
 	&__list-item {
 		padding-bottom: .5rem;
 		font-size: 1.125rem;
+	}
+
+	&__list-anchor {
+		padding: 0;
+		margin: 0;
 	}
 }
