@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ChatBody.css';
 import ChatInput from './ChatInput';
+import ChatMessage from './ChatMessage';
 
 export default class ChatBody extends Component {
 	constructor(props) {
@@ -30,7 +31,7 @@ export default class ChatBody extends Component {
 				<ul className="chat-body__list" onScroll={this._handleScroll} ref={(el) => { this.list = el; }}>
 					{messages.map(message => {
 						return (
-							<li key={message.id} className="chat-body__list-item">{message.text}</li>
+							<ChatMessage key={message.id} message={message} />
 						)
 					})}
 					<li className="chat-body__list-anchor" ref={(el) => { this.end = el; }}></li>
