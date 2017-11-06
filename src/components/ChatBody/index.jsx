@@ -25,7 +25,7 @@ export default class ChatBody extends Component {
 	};
 
 	render() {
-		const {messages} = this.props;
+		const {messages, username} = this.props;
 		return (
 			<main className="chat-body">
 				<ul className="chat-body__list" onScroll={this._handleScroll} ref={(el) => { this.list = el; }}>
@@ -36,12 +36,13 @@ export default class ChatBody extends Component {
 					})}
 					<li className="chat-body__list-anchor" ref={(el) => { this.end = el; }}></li>
 				</ul>
-				<ChatInput />
+				<ChatInput username={username} />
 			</main>
 		);
 	}
 }
 
 ChatBody.propTypes = {
-	messages: PropTypes.arrayOf(PropTypes.object)
+	messages: PropTypes.arrayOf(PropTypes.object),
+	username: PropTypes.string
 };

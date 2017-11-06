@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ChatMessage.css';
 
-export default class ChatInput extends Component {
+export default class ChatMessage extends Component {
 	_getTwelveHour = (datetime) => {
 		let hours = datetime.getHours();
 		let ampm = 'am';

@@ -21,3 +21,20 @@ export const allMessages = (callback) => {
 export const updateUserlist = (callback) => {
 	socket.on('updateUserlist', users => callback(users));
 };
+
+export const verifyName = (user) => {
+	socket.emit('verifyName', user);
+};
+
+export const receiveVerifyName = (callback) => {
+	socket.on('verifyName', user => callback(user));
+};
+
+export const userConnect = (user) => {
+	socket.emit('userConnect', user);
+};
+
+export const reconnect = (callback) => {
+	socket.on('reconnect', user => callback(user));
+};
+

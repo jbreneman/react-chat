@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './ChatInput.css';
 import { sendMessage } from '../../api';
 
@@ -14,7 +15,7 @@ export default class ChatInput extends Component {
 		if (e.key === 'Enter') {
 			sendMessage({
 				text: this.state.text,
-				username: 'test',
+				username: this.props.username,
 				datetime: new Date()
 			});
 
@@ -33,3 +34,7 @@ export default class ChatInput extends Component {
 		);
 	}
 }
+
+ChatInput.propTypes = {
+	username: PropTypes.string
+};

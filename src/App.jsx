@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
+import SignUp from './components/SignUp';
 import ChatBody from './components/ChatBody';
 import Panel from './components/Panel';
 import './App.css';
-import { connect, updateUserlist, receiveMessage, allMessages } from './api';
+import { updateUserlist, receiveMessage, allMessages, userConnect } from './api';
 
 export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			users: [],
-			messages: []
+			messages: [],
+			username: localStorage.getItem('username')
 		};
-
-		connect({ id: 33, name: 'test'});
 
 		updateUserlist(users => {
 			this.setState(users);
@@ -27,15 +27,26 @@ export default class App extends Component {
 		allMessages(data => {
 			this.setState({ messages: data.messages });
 		});
+
+		if (this.state.username) {
+			userConnect({ name: this.state.username });
+		}
 	}
 
+	_updateUsername = (username) => {
+		this.setState({ username });
+	};
+
 	render() {
-		const {users, messages} = this.state;
+		const {users, messages, username} = this.state;
 
 		return (
 			<div className="chat">
-				<ChatBody messages={messages} />
+				<ChatBody messages={messages} username={username} />
 				<Panel users={users} />
+				{!username &&
+					<SignUp userUsername={this._updateUsername} />
+				}
 			</div>
 		);
 	}
