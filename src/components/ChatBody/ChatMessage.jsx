@@ -43,11 +43,15 @@ export default class ChatInput extends Component {
 	render() {
 		const {message} = this.props;
 		const formattedTime = this._formatTime(new Date(message.datetime));
+		const longTime = this._formatTime(new Date(message.datetime), false);
 		return (
 			<li className="chat-message">
 				<span className="chat-message__header">
 					<span className="chat-message__name">{message.username}</span>
-					<span className="chat-message__time">{formattedTime}</span>
+					<span className="chat-message__time">
+						{formattedTime}
+						<span className="chat-message__full-time">{longTime}</span>
+					</span>
 				</span>
 				<p className="chat-message__message">{message.text}</p>
 			</li>

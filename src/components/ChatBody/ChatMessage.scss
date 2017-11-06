@@ -1,6 +1,8 @@
 @import 'styles/vars.scss';
 
 .chat-message {
+	$parent: &;
+
 	display: flex;
 	flex-direction: column;
 	padding-bottom: 1rem;
@@ -19,9 +21,41 @@
 	}
 
 	&__time {
+		position: relative;
 		font-size: .75rem;
 		padding-bottom: .25rem;
 		border-bottom: 1px solid rgba($secondary, .125);
+
+		&:hover {
+			#{$parent}__full-time {
+				opacity: .75;
+			}
+		}
+	}
+
+	&__full-time {
+		position: absolute;
+		padding: .25rem;
+		background-color: rgba(black, .9);
+		top: 100%;
+		left: 50%;
+		transform: translate3d(-50%, 0, 0);
+		color: $light;
+		white-space: nowrap;
+		border-radius: 2px;
+		opacity: 0;
+		transition: opacity $easing-regular;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			bottom: 100%;
+			transform: translate3d(-50%, 0, 0);
+			border-right: .25rem solid transparent;
+			border-left: .25rem solid transparent;
+			border-bottom: .25rem solid rgba(black, .9);
+		}
 	}
 
 	&__message {
