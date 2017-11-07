@@ -45,7 +45,7 @@ export default class App extends Component {
 				<ChatBody messages={messages} username={username} />
 				<Panel users={users} />
 				{!username &&
-					<SignUp userUsername={this._updateUsername} />
+					<SignUp updateUsername={this._updateUsername} />
 				}
 			</div>
 		);

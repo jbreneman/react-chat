@@ -17,7 +17,7 @@ export default class SignUp extends Component {
 				localStorage.setItem('username', user.name);
 				userConnect(user);
 				this.setState({ classes: `${this.state.classes} hidden`});
-				this.props.updateUsername(user.username);
+				this.props.updateUsername(user.name);
 			} else {
 				this.setState({ message: `${user.name} is already taken, please try another name.` });
 			}
