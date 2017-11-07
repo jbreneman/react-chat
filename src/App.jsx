@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SignUp from './components/SignUp';
 import ChatBody from './components/ChatBody';
 import Panel from './components/Panel';
+import { changeFavicon } from './util/change-favicon';
 import './App.css';
 import { updateUserlist, receiveMessage, allMessages, userConnect } from './api';
 
@@ -22,6 +23,10 @@ export default class App extends Component {
 			const messages = this.state.messages;
 			messages.push(message.message);
 			this.setState({ messages });
+
+			if (document.hidden) {
+				changeFavicon('icons/red-icon.png');
+			}
 		});
 
 		allMessages(data => {
