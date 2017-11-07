@@ -27,6 +27,14 @@ export default class App extends Component {
 			if (document.hidden) {
 				changeFavicon('icons/red-icon.png');
 			}
+
+			if (message.refresh) {
+				document.body.style.opacity = 0;
+
+				window.setTimeout(() => {
+					window.location.reload(true);
+				}, 5000);
+			}
 		});
 
 		allMessages(data => {

@@ -8,6 +8,7 @@ body {
 	overflow: hidden;
 	font-family: $raleway;
 	color: black;
+	transition: opacity 4.5s ease-out;
 }
 
 .chat {
