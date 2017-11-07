@@ -1,0 +1,23 @@
+.settings-button {
+	display: flex;
+	fill: white;
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	animation: spin 1s linear infinite;
+	animation-play-state: paused;
+	padding: .5rem;
+
+	&:hover {
+		animation-play-state: running;
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+};

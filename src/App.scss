@@ -16,3 +16,13 @@ body {
 	height: 100vh;
 	display: flex;
 }
+
+.icon {
+	width: 1.5rem;
+	height: 1.5rem;
+
+	path {
+		fill: inherit;
+		stroke: inherit;
+	}
+}

@@ -4,6 +4,8 @@
 	width: 16rem;
 	height: 100%;
 	background-color: $secondary;
+	display: flex;
+	flex-direction: column;
 
 	&__header {
 		width: 100%;
@@ -19,11 +21,17 @@
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+		flex-grow: 1;
 	}
 
 	&__list-item {
 		color: white;
 		padding: .75rem 1rem 0 2rem;
 		line-height: 1.2;
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: flex-end;
 	}
 }

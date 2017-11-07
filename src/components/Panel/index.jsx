@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Panel.css';
+import SettingsButton from './SettingsButton';
 
 export default class Panel extends Component {
 	render() {
 		const {users} = this.props;
+
 		return (
 			<aside className="panel">
 				<header className="panel__header">
@@ -17,11 +19,15 @@ export default class Panel extends Component {
 						)
 					})}
 				</ul>
+				<footer className="panel__footer">
+					<SettingsButton toggleSettings={this.props.toggleSettings} />
+				</footer>
 			</aside>
 		);
 	}
 }
 
 Panel.propTypes = {
-	users: PropTypes.arrayOf(PropTypes.object)
+	users: PropTypes.arrayOf(PropTypes.object),
+	toggleSettings: PropTypes.func
 };

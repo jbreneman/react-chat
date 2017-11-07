@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SignUp from './components/SignUp';
+import Preferences from './components/Preferences';
 import ChatBody from './components/ChatBody';
 import Panel from './components/Panel';
 import { changeFavicon } from './util/change-favicon';
@@ -12,7 +13,8 @@ export default class App extends Component {
 		this.state = {
 			users: [],
 			messages: [],
-			username: localStorage.getItem('username')
+			username: localStorage.getItem('username'),
+			settings: false
 		};
 
 		updateUserlist(users => {
@@ -50,15 +52,22 @@ export default class App extends Component {
 		this.setState({ username });
 	};
 
+	_toggleSettings = () => {
+		this.setState({ settings: !this.state.settings });
+	};
+
 	render() {
-		const {users, messages, username} = this.state;
+		const {users, messages, username, settings} = this.state;
 
 		return (
 			<div className="chat">
 				<ChatBody messages={messages} username={username} />
-				<Panel users={users} />
+				<Panel users={users} toggleSettings={this._toggleSettings} />
 				{!username &&
 					<SignUp updateUsername={this._updateUsername} />
+				}
+				{settings &&
+					<Preferences toggleSettings={this._toggleSettings} />
 				}
 			</div>
 		);
