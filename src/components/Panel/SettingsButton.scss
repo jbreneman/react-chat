@@ -8,6 +8,10 @@
 	animation-play-state: paused;
 	padding: .5rem;
 
+	&:focus {
+		outline: none;
+	}
+
 	&:hover {
 		animation-play-state: running;
 	}

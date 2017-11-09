@@ -10,7 +10,7 @@ export default class Preferences extends Component {
 				<section className="signup__body preferences__body">
 					<h2 className="preferences__heading">Preferences</h2>
 					<div className="preferences__item">
-						<input type="checkbox" id="save-name" className="preferences__checkbox" /> <label for="save-name">Save Name</label>
+						<input type="checkbox" id="save-name" className="preferences__checkbox" /> <label htmlFor="save-name" className="preferences__label">Save Name</label>
 					</div>
 				</section>
 			</div>

@@ -1,6 +1,8 @@
 @import 'styles/vars.scss';
 
 .preferences {
+	$parent: &;
+
 	&__background {
 		cursor: pointer;
 	}
@@ -18,15 +20,55 @@
 		text-transform: uppercase;
 		color: white;
 		line-height: .8;
+		border-bottom: 1px solid rgba(white, .25);
+		padding-bottom: 1rem;
 	}
 
 	&__item {
 		margin-top: 1rem;
 		display: flex;
 		text-transform: uppercase;
+		font-weight: 900;
+		font-size: .875rem;
 	}
 
 	&__checkbox {
 		margin-right: .5rem;
+		display: none;
+
+		&:checked {
+			+ #{$parent}__label {
+				&::before {
+					color: white;
+				}
+			}
+		}
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+
+		&::before {
+			content: '\2713';
+			border: 2px solid white;
+			border-radius: 2px;
+			width: 1rem;
+			height: 1rem;
+			font-size: .75rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-right: .5rem;
+			transition: color $easing-regular;
+			color: transparent;
+		}
+
+		&:hover {
+			&::before {
+				color: rgba(white, .8);
+			}
+		}
 	}
 }
