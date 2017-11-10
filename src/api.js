@@ -34,6 +34,10 @@ export const userConnect = (user) => {
 	socket.emit('userConnect', user);
 };
 
+export const setName = (user) => {
+	socket.emit('setName', user);
+};
+
 export const reconnect = (callback) => {
 	socket.on('reconnect', user => callback(user));
 };

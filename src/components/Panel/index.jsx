@@ -13,9 +13,9 @@ export default class Panel extends Component {
 					Online
 				</header>
 				<ul className="panel__list">
-					{users.map(user => {
+					{users.map((user, index) => {
 						return (
-							<li key={user.id} className="panel__list-item">{user.name}</li>
+							<li key={index} className="panel__list-item">{user.name}</li>
 						)
 					})}
 				</ul>
