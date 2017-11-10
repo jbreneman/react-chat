@@ -13,8 +13,8 @@ export default class App extends Component {
 		this.state = {
 			users: [],
 			messages: [],
-			username: localStorage.getItem('username'),
-			settings: false
+			settingsActive: false,
+			username: localStorage.getItem('username')
 		};
 
 		updateUserlist(users => {
@@ -53,11 +53,11 @@ export default class App extends Component {
 	};
 
 	_toggleSettings = () => {
-		this.setState({ settings: !this.state.settings });
+		this.setState({ settingsActive: !this.state.settingsActive });
 	};
 
 	render() {
-		const {users, messages, username, settings} = this.state;
+		const {users, messages, username, settingsActive} = this.state;
 
 		return (
 			<div className="chat">
@@ -66,7 +66,7 @@ export default class App extends Component {
 				{!username &&
 					<SignUp updateUsername={this._updateUsername} />
 				}
-				{settings &&
+				{settingsActive &&
 					<Preferences toggleSettings={this._toggleSettings} />
 				}
 			</div>
