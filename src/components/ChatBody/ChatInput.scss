@@ -9,6 +9,7 @@
 		font-size: 1.125rem;
 		color: black;
 		padding: .75rem;
+		padding-right: 3rem;
 		appearance: none;
 		border: 0;
 		border-top: 1px solid darken($light, 10%);
@@ -26,6 +27,35 @@
 		position: absolute;
 		right: 0;
 		bottom: 100%;
+
+		&.hidden {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+
+	&__emoji {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		width: 3rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: transparent;
+		border: 0;
+		appearance: none;
+		cursor: pointer;
+		transition: opacity $easing-regular;
+		
+		&:hover {
+			opacity: .75;
+		}
+
+		svg {
+			fill: $secondary;
+		}
 	}
 }
 

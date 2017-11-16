@@ -9,7 +9,8 @@ export default class ChatInput extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			text: ''
+			text: '',
+			picker: false
 		};
 	}
 
@@ -30,11 +31,20 @@ export default class ChatInput extends Component {
 		this.setState({ text: e.target.value });
 	}
 
+	_togglePicker = (e) => {
+		this.setState({ picker: !this.state.picker });
+	}
+
 	render() {
 		return (
 			<div className="chat-input">
 				<input className="chat-input__input" type="text" placeholder="Chat..." onKeyPress={this._handleKeyPress} onInput={this._updateText} />
-				<div className="chat-input__picker">
+				<button className="chat-input__emoji" onClick={this._togglePicker}>
+					<svg className="icon icon-smile" viewBox="0 0 32 32">
+						<path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM22 8c1.105 0 2 1.343 2 3s-0.895 3-2 3-2-1.343-2-3 0.895-3 2-3zM10 8c1.105 0 2 1.343 2 3s-0.895 3-2 3-2-1.343-2-3 0.895-3 2-3zM16 28c-5.215 0-9.544-4.371-10-9.947 2.93 1.691 6.377 2.658 10 2.658s7.070-0.963 10-2.654c-0.455 5.576-4.785 9.942-10 9.942z"></path>
+					</svg>
+				</button>
+				<div className={`chat-input__picker ${this.state.picker ? '' : 'hidden'}`}>
 					<EmojiPicker onChange={function(data){
 					  console.log("Emoji chosen", data);
 					}} />			
