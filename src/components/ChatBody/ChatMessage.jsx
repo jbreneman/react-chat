@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import autoLink from 'autolink.js';
+import Linkify from 'react-linkify';
+import Emojify from 'react-emojione';
 import './ChatMessage.css';
 
 
@@ -42,13 +43,6 @@ export default class ChatMessage extends Component {
 		return `${month} ${datetime.getDate()} at ${twelveHour.hours}:${minutes}:${seconds} ${twelveHour.ampm}`;
 	};
 
-	_formatText = (text) => {
-		return autoLink(text,{
-			email: false,
-			image: true
-		});
-	};
-
 	render() {
 		const {message} = this.props;
 		const formattedTime = this._formatTime(new Date(message.datetime));
@@ -62,7 +56,11 @@ export default class ChatMessage extends Component {
 						<span className="chat-message__full-time">{longTime}</span>
 					</span>
 				</span>
-				<p className="chat-message__message" dangerouslySetInnerHTML={{__html: this._formatText(message.text)}}></p>
+				<Linkify>
+					<Emojify>
+						<p className="chat-message__message">{message.text}</p>
+					</Emojify>
+				</Linkify>
 			</li>
 		);
 	}
