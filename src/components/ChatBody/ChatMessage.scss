@@ -44,6 +44,7 @@
 		white-space: nowrap;
 		border-radius: 2px;
 		opacity: 0;
+		pointer-events: none;
 		transition: opacity $easing-regular;
 
 		&::before {
@@ -62,5 +63,11 @@
 		margin: 0;
 		padding-top: .5rem;
 		font-size: 1.125rem;
+
+		img {
+			display: block;
+			max-width: 100%;
+			margin: .25rem 0;
+		}
 	}
 }
