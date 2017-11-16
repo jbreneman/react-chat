@@ -67,7 +67,7 @@ export default class App extends Component {
 					<SignUp updateUsername={this._updateUsername} />
 				}
 				{settingsActive &&
-					<Preferences toggleSettings={this._toggleSettings} />
+					<Preferences toggleSettings={this._toggleSettings} updateUsername={this._updateUsername} />
 				}
 			</div>
 		);
