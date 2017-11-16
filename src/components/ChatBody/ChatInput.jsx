@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import EmojiPicker from 'emojione-picker';
+import '../../../node_modules/emojione-picker/css/picker.css';
 import './ChatInput.css';
 import { sendMessage } from '../../api';
 
@@ -30,7 +32,14 @@ export default class ChatInput extends Component {
 
 	render() {
 		return (
-			<input className="chat-input" type="text" placeholder="Chat..." onKeyPress={this._handleKeyPress} onInput={this._updateText} />
+			<div className="chat-input">
+				<input className="chat-input__input" type="text" placeholder="Chat..." onKeyPress={this._handleKeyPress} onInput={this._updateText} />
+				<div className="chat-input__picker">
+					<EmojiPicker onChange={function(data){
+					  console.log("Emoji chosen", data);
+					}} />			
+				</div>
+			</div>
 		);
 	}
 }

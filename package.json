@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "autolink.js": "0.0.54",
+    "emojione-picker": "^2.2.1",
     "node-sass-chokidar": "0.0.3",
     "normalize.css": "^7.0.0",
     "npm-run-all": "^4.1.1",
