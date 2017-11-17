@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Linkify from 'react-linkify';
 import Emojify from 'react-emojione';
 import reactStringReplace from 'react-string-replace';
+import Imagify from './Imagify';
 import './ChatMessage.css';
 
 
@@ -61,7 +62,7 @@ export default class ChatMessage extends Component {
 					<Emojify>
 						<p className="chat-message__message">
 							{reactStringReplace(message.text, /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|png|svg))/i, (match, i) => (
-							    <a key={i} href={match} target="_blank"><img src={match} alt="" /></a>
+								<Imagify url={match} key={i} />
 							))}
 						</p>
 					</Emojify>

@@ -1,0 +1,54 @@
+@import 'styles/vars.scss';
+
+.unfurl {
+	$parent: &;
+	
+	display: flex;
+	flex-direction: column;
+	margin-top: .5rem;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		font-size: .75rem;
+		cursor: pointer;
+		transition: opacity $easing-regular;
+
+		&::after {
+			content: '';
+			margin-left: .25rem;
+			border-top: 5px solid $secondary;
+			border-right: 5px solid transparent;
+			border-left: 5px solid transparent;
+			transition: transform $easing-regular;
+		}
+
+		&:hover {
+			opacity: .75;
+
+			&::after {
+				transform: rotate(-45deg);
+			}
+		}
+
+		&.closed {
+			&::after {
+				transform: rotate(-90deg);
+			}
+
+			+ #{$parent}__link {
+				height: 0;
+			}
+		}
+	}
+
+	&__link {
+		overflow: hidden;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		margin: .25rem 0;
+	}
+}
