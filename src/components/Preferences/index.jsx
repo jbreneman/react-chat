@@ -34,13 +34,14 @@ export default class Preferences extends Component {
 			<div className="signup preferences">
 				<div className="signup__background preferences__background" onClick={toggleSettings}></div>
 				<section className="signup__body preferences__body">
+					<button className="preferences__close" onClick={toggleSettings}>Close</button>
 					<h2 className="preferences__heading">Preferences</h2>
 					<div className="preferences__item">
-						<input type="checkbox" id="save-name" value="savename" checked={saveName} className="preferences__checkbox" onChange={this._changeSaveName} /> <label htmlFor="save-name" className="preferences__check-label">Save Name</label>
+						<input type="checkbox" id="save-name" value="savename" checked={saveName} className="preferences__checkbox" onChange={this._changeSaveName} /><label htmlFor="save-name" className="preferences__check-label">Save Name</label>
 					</div>
 
 					<div className="preferences__item">
-						<input type="text" id="username" value={username} className="preferences__input" onChange={this._changeUsername} /> <label htmlFor="username" className="preferences__label">Username</label>
+						<label htmlFor="username" className="preferences__label">Username</label><input type="text" id="username" value={username} className="preferences__input" onChange={this._changeUsername} />
 					</div>
 				</section>
 			</div>

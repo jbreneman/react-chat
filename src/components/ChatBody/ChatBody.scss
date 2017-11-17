@@ -1,6 +1,8 @@
 @import 'styles/vars.scss';
 
 .chat-body {
+	position: relative;
+	z-index: 0;
 	flex-grow: 1;
 	background-color: $light;
 	display: flex;
