@@ -7,6 +7,7 @@
 	background-color: $light;
 	display: flex;
 	flex-direction: column;
+	width: calc(100% - 16rem);
 
 	&__list {
 		flex-grow: 1;

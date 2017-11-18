@@ -14,6 +14,7 @@ export default class App extends Component {
 			users: [],
 			messages: [],
 			settingsActive: false,
+			panelActive: false,
 			username: localStorage.getItem('username')
 		};
 
@@ -56,13 +57,18 @@ export default class App extends Component {
 		this.setState({ settingsActive: !this.state.settingsActive });
 	};
 
+	// TODO: refactor into 1 method ^^
+	_togglePanel = () => {
+		this.setState({ panelActive: !this.state.panelActive });
+	};
+
 	render() {
-		const {users, messages, username, settingsActive} = this.state;
+		const {users, messages, username, settingsActive, panelActive} = this.state;
 
 		return (
 			<div className="chat">
-				<ChatBody messages={messages} username={username} />
-				<Panel users={users} toggleSettings={this._toggleSettings} />
+				<ChatBody messages={messages} username={username} panelActive={panelActive} togglePanel={this._togglePanel} />
+				<Panel users={users} panelActive={panelActive} togglePanel={this._togglePanel} toggleSettings={this._toggleSettings} />
 				{!username &&
 					<SignUp updateUsername={this._updateUsername} />
 				}

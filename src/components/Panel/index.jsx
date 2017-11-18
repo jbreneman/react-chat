@@ -5,11 +5,15 @@ import SettingsButton from './SettingsButton';
 
 export default class Panel extends Component {
 	render() {
-		const {users} = this.props;
+		const {users, toggleSettings, panelActive, togglePanel} = this.props;
+		const classes = `panel ${panelActive ? 'active' : ''}`;
 
 		return (
-			<aside className="panel">
+			<aside className={classes}>
 				<header className="panel__header">
+					<button className="panel__toggle" onClick={togglePanel}>
+						{panelActive ? 'Close': 'Menu'}
+					</button>
 					Online
 				</header>
 				<ul className="panel__list">
@@ -20,7 +24,7 @@ export default class Panel extends Component {
 					})}
 				</ul>
 				<footer className="panel__footer">
-					<SettingsButton toggleSettings={this.props.toggleSettings} />
+					<SettingsButton toggleSettings={toggleSettings} />
 				</footer>
 			</aside>
 		);
@@ -29,5 +33,7 @@ export default class Panel extends Component {
 
 Panel.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.object),
-	toggleSettings: PropTypes.func
+	toggleSettings: PropTypes.func,
+	panelActive: PropTypes.bool,
+	togglePanel: PropTypes.func
 };

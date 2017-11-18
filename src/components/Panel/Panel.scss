@@ -38,4 +38,48 @@
 		justify-content: flex-end;
 		padding: .25rem;
 	}
+
+	&__toggle {
+		display: none;
+	}
+}
+
+@media screen and (max-width: $break--small) {
+	.panel {
+		$parent: &;
+		
+		width: 100vw;
+		position: fixed;
+		top: 0;
+		left: 100%;
+		transition: transform $easing-regular;
+
+		&.active {
+			transform: translate3d(-100%, 0, 0);
+		}
+
+		&__header {
+			position: relative;
+			text-align: center;
+		}
+
+		&__toggle {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translate3d(0, -50%, 0);
+			display: block;
+			background-color: transparent;
+			border: 0;
+			appearance: none;
+			margin-left: auto;
+			color: white;
+			font-family: $raleway;
+			text-transform: uppercase;
+			font-weight: 700;
+			font-size: 1rem;
+			padding: 1rem;
+			padding-top: 1.125rem;
+		}
+	}
 }

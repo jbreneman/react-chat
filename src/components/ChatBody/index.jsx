@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './ChatBody.css';
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
+import MobileNav from './MobileNav';
 
 export default class ChatBody extends Component {
 	constructor(props) {
@@ -25,9 +26,10 @@ export default class ChatBody extends Component {
 	};
 
 	render() {
-		const {messages, username} = this.props;
+		const {messages, username, panelActive, togglePanel} = this.props;
 		return (
 			<main className="chat-body">
+				<MobileNav panelActive={panelActive} togglePanel={togglePanel} />
 				<ul className="chat-body__list" onScroll={this._handleScroll} ref={(el) => { this.list = el; }}>
 					{messages.map(message => {
 						return (
@@ -43,6 +45,8 @@ export default class ChatBody extends Component {
 }
 
 ChatBody.propTypes = {
+	panelActive: PropTypes.bool,
+	togglePanel: PropTypes.func,
 	messages: PropTypes.arrayOf(PropTypes.object),
 	username: PropTypes.string
 };
