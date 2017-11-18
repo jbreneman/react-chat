@@ -58,7 +58,7 @@ export default class ChatMessage extends Component {
 						<span className="chat-message__full-time">{longTime}</span>
 					</span>
 				</span>
-				<Linkify>
+				<Linkify properties={{target: '_blank'}}>
 					<Emojify>
 						<p className="chat-message__message">
 							{reactStringReplace(message.text, /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|png|svg))/i, (match, i) => (
