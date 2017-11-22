@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
 
-const socket = openSocket('http://localhost:8900');
+const socket = openSocket(process.env.REACT_APP_SERVER_HOST);
 
 export const connect = (user) => {
 	socket.emit('userConnect', user);
