@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
 
-const socket = openSocket(process.env.REACT_APP_SERVER_HOST);
+const socket = openSocket(process.env.REACT_APP_SERVER_HOST, {'transports': ['websocket', 'polling']});
 
 export const connect = (user) => {
 	socket.emit('userConnect', user);
