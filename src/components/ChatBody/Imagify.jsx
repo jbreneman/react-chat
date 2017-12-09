@@ -7,7 +7,7 @@ export default class Imagify extends Component {
 		super(props);
 		const {unfurl} = this.props.preferences;
 		this.state = {
-			furl: unfurl
+			furl: !unfurl
 		};
 	}
 
