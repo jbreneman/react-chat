@@ -5,7 +5,7 @@ import ChatBody from './components/ChatBody';
 import Panel from './components/Panel';
 import { changeFavicon } from './util/change-favicon';
 import './App.css';
-import { updateUserlist, receiveMessage, allMessages, userConnect } from './api';
+import { updateUserlist, receiveMessage, allMessages, userConnect, reconnect } from './api';
 
 export default class App extends Component {
 	constructor(props) {
@@ -47,6 +47,10 @@ export default class App extends Component {
 		if (this.state.username) {
 			userConnect({ name: this.state.username });
 		}
+
+		reconnect(() => {
+			userConnect({ name: this.state.username });
+		});
 	}
 
 	_updateUsername = (username) => {
