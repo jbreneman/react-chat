@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Linkify from 'react-linkify';
 import Emojify from 'react-emojione';
 import reactStringReplace from 'react-string-replace';
+import SpotifyPlayer from 'react-spotify-player';
 import Imagify from './Imagify';
 import './ChatMessage.css';
 
@@ -49,6 +50,23 @@ export default class ChatMessage extends Component {
 		const {message} = this.props;
 		const formattedTime = this._formatTime(new Date(message.datetime));
 		const longTime = this._formatTime(new Date(message.datetime), false);
+
+		let replacedMessage;
+
+		replacedMessage = reactStringReplace(message.text, /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|png|svg))/i, (match, i) => (
+			<Imagify url={match} key={i} />
+		));
+
+		replacedMessage = reactStringReplace(replacedMessage, /((?:https?:\/\/open.spotify.com(?:\/[^\s]+))|(?:spotify(?::[^\s]+)))/g, (match, i) => (
+			<SpotifyPlayer
+				uri={match}
+				size="compact"
+				view="coverart"
+				theme="black"
+				key={i}
+			/>
+		));
+
 		return (
 			<li className="chat-message">
 				<span className="chat-message__header">
@@ -61,9 +79,7 @@ export default class ChatMessage extends Component {
 				<Linkify properties={{target: '_blank'}}>
 					<Emojify>
 						<p className="chat-message__message">
-							{reactStringReplace(message.text, /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|png|svg))/i, (match, i) => (
-								<Imagify url={match} key={i} />
-							))}
+							{replacedMessage}
 						</p>
 					</Emojify>
 				</Linkify>
