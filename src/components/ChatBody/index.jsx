@@ -26,19 +26,19 @@ export default class ChatBody extends Component {
 	};
 
 	render() {
-		const {messages, username, panelActive, togglePanel} = this.props;
+		const {messages, preferences, panelActive, togglePanel} = this.props;
 		return (
 			<main className="chat-body">
 				<MobileNav panelActive={panelActive} togglePanel={togglePanel} />
 				<ul className="chat-body__list" onScroll={this._handleScroll} ref={(el) => { this.list = el; }}>
 					{messages.map(message => {
 						return (
-							<ChatMessage key={message.id} message={message} />
+							<ChatMessage key={message.id} message={message} preferences={preferences} />
 						)
 					})}
 					<li className="chat-body__list-anchor" ref={(el) => { this.end = el; }}></li>
 				</ul>
-				<ChatInput username={username} />
+				<ChatInput username={preferences.username} />
 			</main>
 		);
 	}
@@ -48,5 +48,5 @@ ChatBody.propTypes = {
 	panelActive: PropTypes.bool,
 	togglePanel: PropTypes.func,
 	messages: PropTypes.arrayOf(PropTypes.object),
-	username: PropTypes.string
+	preferences: PropTypes.object
 };

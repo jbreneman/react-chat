@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Linkify from 'react-linkify';
 import Emojify from 'react-emojione';
 import reactStringReplace from 'react-string-replace';
@@ -47,14 +48,14 @@ export default class ChatMessage extends Component {
 	};
 
 	render() {
-		const {message} = this.props;
+		const {message, preferences} = this.props;
 		const formattedTime = this._formatTime(new Date(message.datetime));
 		const longTime = this._formatTime(new Date(message.datetime), false);
 
 		let replacedMessage;
 
 		replacedMessage = reactStringReplace(message.text, /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|png|svg))/i, (match, i) => (
-			<Imagify url={match} key={i} />
+			<Imagify url={match} preferences={preferences} key={i} />
 		));
 
 		replacedMessage = reactStringReplace(replacedMessage, /((?:https?:\/\/open.spotify.com(?:\/[^\s]+))|(?:spotify(?::[^\s]+)))/g, (match, i) => (
@@ -87,3 +88,8 @@ export default class ChatMessage extends Component {
 		);
 	}
 }
+
+ChatMessage.propTypes = {
+	message: PropTypes.object,
+	preferences: PropTypes.object
+};

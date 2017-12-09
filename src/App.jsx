@@ -71,7 +71,7 @@ export default class App extends Component {
 
 		return (
 			<div className="chat">
-				<ChatBody messages={messages} username={preferences.username} panelActive={panelActive} togglePanel={this._togglePanel} />
+				<ChatBody messages={messages} preferences={preferences} panelActive={panelActive} togglePanel={this._togglePanel} />
 				<Panel users={users} panelActive={panelActive} togglePanel={this._togglePanel} toggleSettings={this._toggleSettings} />
 				{!preferences.username &&
 					<SignUp updatePreferences={this._updatePreferences} />

@@ -5,8 +5,9 @@ import './ImageUnfurl.css';
 export default class Imagify extends Component {
 	constructor(props) {
 		super(props);
+		const {unfurl} = this.props.preferences;
 		this.state = {
-			furl: false
+			furl: unfurl
 		};
 	}
 
@@ -30,5 +31,6 @@ export default class Imagify extends Component {
 }
 
 Imagify.propTypes = {
-	text: PropTypes.string
+	text: PropTypes.string,
+	preferences: PropTypes.object
 };
