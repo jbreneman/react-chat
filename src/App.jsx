@@ -15,7 +15,7 @@ export default class App extends Component {
 			messages: [],
 			settingsActive: false,
 			panelActive: false,
-			username: localStorage.getItem('username')
+			preferences: JSON.parse(localStorage.getItem('preferences')) || {username: ''}
 		};
 
 		updateUserlist(users => {
@@ -44,17 +44,17 @@ export default class App extends Component {
 			this.setState({ messages: data.messages });
 		});
 
-		if (this.state.username) {
-			userConnect({ name: this.state.username });
+		if (this.state.preferences.username) {
+			userConnect({ name: this.state.preferences.username });
 		}
 
 		reconnect(() => {
-			userConnect({ name: this.state.username });
+			userConnect({ name: this.state.preferences.username });
 		});
 	}
 
-	_updateUsername = (username) => {
-		this.setState({ username });
+	_updatePreferences = (preferences) => {
+		this.setState({ preferences });
 	};
 
 	_toggleSettings = () => {
@@ -67,17 +67,17 @@ export default class App extends Component {
 	};
 
 	render() {
-		const {users, messages, username, settingsActive, panelActive} = this.state;
+		const {users, messages, preferences, settingsActive, panelActive} = this.state;
 
 		return (
 			<div className="chat">
-				<ChatBody messages={messages} username={username} panelActive={panelActive} togglePanel={this._togglePanel} />
+				<ChatBody messages={messages} username={preferences.username} panelActive={panelActive} togglePanel={this._togglePanel} />
 				<Panel users={users} panelActive={panelActive} togglePanel={this._togglePanel} toggleSettings={this._toggleSettings} />
-				{!username &&
-					<SignUp updateUsername={this._updateUsername} />
+				{!preferences.username &&
+					<SignUp updatePreferences={this._updatePreferences} />
 				}
 				{settingsActive &&
-					<Preferences toggleSettings={this._toggleSettings} updateUsername={this._updateUsername} />
+					<Preferences toggleSettings={this._toggleSettings} updatePreferences={this._updatePreferences} />
 				}
 			</div>
 		);

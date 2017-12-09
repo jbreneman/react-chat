@@ -14,10 +14,11 @@ export default class SignUp extends Component {
 
 		receiveVerifyName(user => {
 			if (user.available) {
-				localStorage.setItem('username', user.name);
+				const newPreferences = Object.assign({}, localStorage.getItem('preferences'), {username: user.name});
 				userConnect(user);
 				this.setState({ classes: `${this.state.classes} hidden`});
-				this.props.updateUsername(user.name);
+				localStorage.setItem('preferences', JSON.stringify(newPreferences));
+				this.props.updatePreferences(newPreferences);
 			} else {
 				this.setState({ message: `${user.name} is already taken, please try another name.` });
 			}
